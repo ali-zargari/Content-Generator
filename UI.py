@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
+from Scraper import scrapeRedditPostByURL
+from text_gen import gpt_summarize
 
 
 class GuiApplication:
@@ -17,7 +19,7 @@ class GuiApplication:
         # Create a label and a text box for URL entry with some styling
         tk.Label(self.root, text="URL:", font=("Arial", 14)).pack(pady=10)
 
-        # Store this Entry widget so we can get its content later
+        # Store this Entry widget, so we can get its content later
         self.url_entry = tk.Entry(self.root, font=("Arial", 12), width=50)
         self.url_entry.pack(pady=10)
 
@@ -41,6 +43,8 @@ class GuiApplication:
         # ... Put here your URL processing logic
         # You might want to consider using a separate thread
         # for the processing logic so that the UI doesn't hang
+
+        print(gpt_summarize(scrapeRedditPostByURL(url)))
 
         messagebox.showinfo("Success", "URL processing completed!")
 
