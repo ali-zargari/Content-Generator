@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-from text_gen import gpt_summarize
 
 def scrapeRedditPostByURL(url):
     # Step 1: Fetch the webpage content

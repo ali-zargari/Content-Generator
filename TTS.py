@@ -1,17 +1,26 @@
+import os
+
 import boto3
+from dotenv import load_dotenv
+
+load_dotenv()
+
+AWS_REGION = os.getenv('AWS_REGION')
+AWS_ACCESS_KEY = os.getenv('AWS_ACCESS_KEY')
+AWS_SECRET_KEY = os.getenv('AWS_SECRET_KEY')
 
 def synthesize_speech(ssml_text, output_file):
     # Initialize a session using Amazon Polly
     polly_client = boto3.Session(
-        aws_access_key_id='AKIAVRUVVYWSLAMUSIN2',
-        aws_secret_access_key='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',
-        region_name='us-west-2'
+        aws_access_key_id=AWS_ACCESS_KEY,
+        aws_secret_access_key=AWS_SECRET_KEY,
+        region_name=AWS_REGION
     ).client('polly')
 
     # Request speech synthesis
     response = polly_client.synthesize_speech(
-        VoiceId='Gregory',  # Change this to a neural voice
-        Engine='generative',  # Use neural engine for generative voice
+        VoiceId='Ruth',  # Change this to a neural voice
+        Engine='neural',  # Use neural engine for generative voice
         OutputFormat='mp3',
         TextType='ssml',
         Text=ssml_text
@@ -26,36 +35,27 @@ if __name__ == '__main__':
     ssml_text = """
 <speak>
     <p>
-        In April 1981, <break time="200ms"/> three members of the 
-        <phoneme alphabet="ipa" ph="ʃɑːrp">Sharp</phoneme> family 
-        and a family friend were <break time="200ms"/> <phoneme alphabet="ipa" ph="ˈbruːtəli">brutally</phoneme> 
-        <phoneme alphabet="ipa" ph="ˈmɜːrdərd">murdered</phoneme> in a 
-        <phoneme alphabet="ipa" ph="ˈkæbɪn">cabin</phoneme> at the 
-        <phoneme alphabet="ipa" ph="ˈkɛdi">Keddie</phoneme> Resort in northern California. 
-        <break time="500ms"/>
+        Uncover the SHOCKING truth behind AI text generation! <break time="500ms"/>
     </p>
-
+    
     <p>
-        The crime scene was horrifically <phoneme alphabet="ipa" ph="ˈvaɪələnt">violent</phoneme>, 
-        with the <phoneme alphabet="ipa" ph="ˈvɪktɪmz">victims</phoneme> 
-        <phoneme alphabet="ipa" ph="baʊnd">bound</phoneme>, 
-        <phoneme alphabet="ipa" ph="ˈblʌʤənd">bludgeoned</phoneme>, and 
-        <phoneme alphabet="ipa" ph="stæbd">stabbed</phoneme>. 
-        <s>Despite initial suspects and ongoing investigations, the case went cold for many years.</s> 
-        <break time="700ms"/>
+        SECRET AI CONSPIRACY REVEALED: How FREE users accessed custom GPTs reserved for PLUS+ accounts! <break time="500ms"/>
     </p>
-
+    
     <p>
-        Recent re-examinations of the evidence and new leads have kept the case in the public eye, 
-        but the murders remain <phoneme alphabet="ipa" ph="ʌnˈsɑːlvd">unsolved</phoneme>, 
-        leaving a community <phoneme alphabet="ipa" ph="ˈhɔːntɪd">haunted</phoneme> by the brutal crime.
-        <break time="500ms"/>
+        Have you ever wondered how some got LIMITED access to GPT4O without PLUS+ perks? Could it be a glitch... or something SINISTER? <break time="700ms"/>
     </p>
-
+    
     <p>
-        <amazon:effect name="drc">
-            This tragic event has deeply affected the residents, with the chilling memory still lingering.
-        </amazon:effect>
+        DIVE into the subreddit for AI tech and UNRAVEL the mystery of FREE users INTRUDING into PLUS+ territory! <break time="700ms"/>
+    </p>
+    
+    <p>
+        Explore the DARK side of AI text generation and DISCOVER how the UNEXPECTED became reality! <break time="500ms"/>
+    </p>
+    
+    <p>
+        DON'T miss this mind-blowing TWIST in the world of AI! #AIconspiracy #GPT4O #SecretRevealed
     </p>
 </speak>
 
