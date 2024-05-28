@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from Scraper import scrapeRedditPostByURL
-from text_gen import gpt_summarize
+from text_gen import gpt_transform_reddit_post
 
 
 class GuiApplication:
@@ -44,7 +44,7 @@ class GuiApplication:
         # You might want to consider using a separate thread
         # for the processing logic so that the UI doesn't hang
 
-        print(gpt_summarize(scrapeRedditPostByURL(url)))
+        print(gpt_transform_reddit_post(scrapeRedditPostByURL(url)))
 
         messagebox.showinfo("Success", "URL processing completed!")
 
